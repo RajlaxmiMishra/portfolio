@@ -21,6 +21,11 @@ export function initReveal() {
     return;
   }
 
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(el => el.classList.add('is-in'));
+    return;
+  }
+
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {

@@ -6,6 +6,7 @@
 .site-nav {
   position: fixed;
   top: var(--space-4);
+  top: max(var(--space-4), env(safe-area-inset-top, 0px));
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-nav);
@@ -167,8 +168,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: var(--radius-pill);
   color: var(--clr-ink);
   transition: background var(--dur-fast) var(--ease-out);
@@ -188,7 +189,8 @@
 .offcanvas {
   background: var(--clr-ink) !important;
   color: var(--clr-paper) !important;
-  width: 100vw !important;
+  width: 100% !important;
+  height: 100vh !important;
   height: 100dvh !important;
   border: none !important;
 }
@@ -200,12 +202,21 @@
   align-items: flex-start;
   gap: var(--space-6);
   padding: var(--space-12) var(--space-8);
+  padding: max(var(--space-12), env(safe-area-inset-top, 0px))
+           max(var(--space-8), env(safe-area-inset-right, 0px))
+           max(var(--space-12), env(safe-area-inset-bottom, 0px))
+           max(var(--space-8), env(safe-area-inset-left, 0px));
 }
 
 .offcanvas__close {
   position: absolute;
   top: var(--space-6);
+  top: max(var(--space-6), env(safe-area-inset-top, 0px));
   right: var(--space-6);
+  right: max(var(--space-6), env(safe-area-inset-right, 0px));
+  width: 2.75rem;
+  height: 2.75rem;
+  background-size: 1rem;
   color: var(--clr-paper);
   opacity: 0.6;
   transition: opacity var(--dur-fast) var(--ease-out);
@@ -221,6 +232,7 @@
   font-weight: 800;
   color: var(--clr-paper);
   line-height: 1;
+  padding-block: var(--space-2);
   transition: color var(--dur-fast) var(--ease-out);
   font-variation-settings: "opsz" 72, "wdth" 100;
 }
@@ -360,6 +372,7 @@
   border: 2px solid var(--clr-ink);
   border-radius: var(--radius-pill);
   padding: 0.55em 1.4em;
+  min-height: 44px;
   /* Hard shadow — shifts on hover */
   box-shadow: 3px 3px 0 var(--clr-ink);
   transition: box-shadow var(--dur-fast) var(--ease-out),
@@ -401,6 +414,7 @@
   border: 2px solid var(--clr-paper);
   border-radius: var(--radius-pill);
   padding: 0.7em 2em;
+  min-height: 44px;
   /* Hard tomato shadow */
   box-shadow: 5px 5px 0 var(--clr-tomato);
   transition: box-shadow var(--dur-fast) var(--ease-out),
@@ -480,6 +494,14 @@
   color: var(--clr-paper);
   position: relative;
   /* Underline drawn via pseudo-element */
+}
+
+@media (hover: none) {
+  .proj-link:active,
+  .contact-cta:active,
+  .nav-toggle:active {
+    transform: translate(2px, 2px);
+  }
 }
 
 .contact-link::after {

@@ -5,6 +5,7 @@
 /* ── Hero ─────────────────────────────────────────────────── */
 .hero {
   position: relative;
+  min-height: 100vh;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -30,7 +31,7 @@
 .hero__name {
   display: block;
   font-family: var(--ff-display);
-  font-size: clamp(4rem, 15vw, 18rem);
+  font-size: clamp(3.5rem, 15vw, 18rem);
   font-weight: 800;
   line-height: 0.92;
   letter-spacing: -0.025em;
@@ -74,7 +75,7 @@
   }
 }
 
-/* Sticker — overlaps name block */
+/* Sticker — overlaps the name on desktop; stacks below it on phones */
 .hero__sticker-wrap {
   position: absolute;
   top: 12%;
@@ -86,6 +87,22 @@
   .hero__sticker-wrap {
     top: 8%;
     right: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: calc(var(--nav-height) + var(--space-8));
+  }
+
+  .hero__sticker-wrap {
+    position: relative;
+    top: auto;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--space-3);
+    padding-right: var(--space-2);
   }
 }
 
@@ -274,6 +291,48 @@
   align-items: flex-start;
 }
 
+@media (max-width: 767px) {
+  .about-section__inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    column-gap: var(--space-4);
+    row-gap: var(--space-6);
+  }
+
+  .about-photo-col {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .about-text-col {
+    display: contents;
+  }
+
+  .about-text-col > .section__label,
+  .about-text-col > .section__heading {
+    grid-column: 2;
+  }
+
+  .about-text-col > .section__label {
+    grid-row: 1;
+    align-self: end;
+    margin-bottom: 0;
+  }
+
+  .about-text-col > .section__heading {
+    grid-row: 2;
+    align-self: start;
+    margin: 0;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    overflow-wrap: anywhere;
+  }
+
+  .about-para,
+  .fact-list {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+}
+
 @media (min-width: 768px) {
   .about-section__inner {
     grid-template-columns: minmax(260px, 360px) 1fr;
@@ -296,9 +355,22 @@
   border: 2px solid var(--clr-ink);
   background: var(--clr-paper-dim);
   transform: rotate(-3deg);
+  transition: transform var(--dur-base) var(--ease-out);
   box-shadow: 6px 6px 0 var(--clr-ink);
   overflow: hidden;
   position: relative;
+}
+
+@media (max-width: 767px) {
+  .about-photo-frame {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-photo-frame:hover {
+    transform: rotate(-1deg) translateY(-4px);
+  }
 }
 
 .about-photo-frame img {
@@ -565,6 +637,12 @@
 .contact-section {
   background: var(--clr-ink);
   padding-block: var(--space-24);
+}
+
+@supports (padding: max(0px)) {
+  .contact-section {
+    padding-bottom: max(var(--space-24), env(safe-area-inset-bottom));
+  }
 }
 
 .contact-section__inner {
