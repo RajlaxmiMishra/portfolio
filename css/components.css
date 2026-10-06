@@ -1,0 +1,557 @@
+/* ============================================================
+   COMPONENTS — nav pill, status dot, offcanvas, sticker, marquee
+   ============================================================ */
+
+/* ── Nav pill ────────────────────────────────────────────── */
+.site-nav {
+  position: fixed;
+  top: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-nav);
+  width: calc(100% - var(--space-8));
+  max-width: 860px;
+}
+
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background: var(--clr-paper);
+  border: 2px solid var(--clr-ink);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-6);
+  height: var(--nav-height);
+}
+
+/* RM monogram */
+.site-nav__mark {
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--clr-ink);
+  white-space: nowrap;
+  font-variation-settings: "opsz" 24, "wdth" 100;
+  flex-shrink: 0;
+}
+
+/* Desktop links */
+.site-nav__links {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .site-nav__links {
+    display: flex;
+  }
+}
+
+.site-nav__links a {
+  font-family: var(--ff-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--clr-ink-soft);
+  transition: color var(--dur-fast) var(--ease-out);
+  position: relative;
+  z-index: 1;
+  padding: var(--space-2) var(--space-3);
+}
+
+.site-nav__links a:hover,
+.site-nav__links a[aria-current="location"] {
+  color: var(--clr-ink);
+}
+
+.site-nav__links a:focus-visible {
+  border-radius: var(--radius-pill);
+  outline: 2px solid var(--clr-tomato);
+  outline-offset: 2px;
+}
+
+.site-nav__highlight {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--clr-butter);
+  border: 2px solid var(--clr-ink);
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+  transform: translate(0, -50%);
+  transition: transform var(--dur-base) var(--ease-out),
+              width var(--dur-base) var(--ease-out);
+}
+
+/* Right cluster: status + hamburger */
+.site-nav__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+/* ── Fine-pointer indicator ───────────────────────────────── */
+.pointer-cursor {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--clr-ink);
+  border: 1px solid transparent;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.pointer-cursor--visible {
+  display: block;
+}
+
+@media (pointer: fine) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .pointer-cursor--visible {
+    will-change: transform;
+  }
+
+  .pointer-cursor--visible[data-interactive="true"] {
+    background: transparent;
+    border-color: var(--clr-tomato);
+  }
+}
+
+/* ── Status dot ───────────────────────────────────────────── */
+.status-dot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--clr-green);
+  white-space: nowrap;
+}
+
+.status-dot__pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--clr-green);
+  flex-shrink: 0;
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--clr-green) 50%, transparent); }
+  50%       { box-shadow: 0 0 0 5px transparent; }
+}
+
+.status-dot__label {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .status-dot__label {
+    display: inline;
+  }
+}
+
+/* ── Hamburger button ─────────────────────────────────────── */
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-pill);
+  color: var(--clr-ink);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.nav-toggle:hover {
+  background: var(--clr-paper-dim);
+}
+
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* ── Offcanvas override — full-screen overlay ─────────────── */
+.offcanvas {
+  background: var(--clr-ink) !important;
+  color: var(--clr-paper) !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  border: none !important;
+}
+
+.offcanvas-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-6);
+  padding: var(--space-12) var(--space-8);
+}
+
+.offcanvas__close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  color: var(--clr-paper);
+  opacity: 0.6;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.offcanvas__close:hover {
+  opacity: 1;
+}
+
+.offcanvas__link {
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-weight: 800;
+  color: var(--clr-paper);
+  line-height: 1;
+  transition: color var(--dur-fast) var(--ease-out);
+  font-variation-settings: "opsz" 72, "wdth" 100;
+}
+
+.offcanvas__link:hover {
+  color: var(--clr-tomato);
+}
+
+.offcanvas__link[aria-current="location"] {
+  color: var(--clr-butter);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__highlight {
+    transition: none;
+  }
+}
+
+/* ── Butter sticker ───────────────────────────────────────── */
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clr-butter);
+  color: var(--clr-ink);
+  font-family: var(--ff-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sticker);
+  border: 2px solid color-mix(in srgb, var(--clr-butter) 65%, var(--clr-ink) 35%);
+  box-shadow: var(--shadow-sticker);
+  transform: rotate(-6deg);
+  user-select: none;
+  white-space: nowrap;
+  transition: transform var(--dur-base) var(--ease-out),
+              box-shadow var(--dur-base) var(--ease-out);
+}
+
+.sticker:hover {
+  transform: rotate(-3deg) scale(1.04);
+  box-shadow: 6px 10px 28px color-mix(in srgb, var(--clr-ink) 22%, transparent);
+}
+
+/* ── Marquee band ─────────────────────────────────────────── */
+.marquee-band {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--clr-ink);
+  overflow: hidden;
+  padding-block: var(--space-3);
+  border-top: 1px solid color-mix(in srgb, var(--clr-paper) 10%, var(--clr-ink));
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-family: var(--ff-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--clr-paper);
+  padding-inline: var(--space-4);
+  white-space: nowrap;
+}
+
+/* Tomato asterisk separator — pure CSS */
+.marquee-item::after {
+  content: "✳";
+  color: var(--clr-tomato);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Stack chips ──────────────────────────────────────────── */
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.chip {
+  font-family: var(--ff-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-ink);
+  border: 2px solid var(--clr-ink);
+  border-radius: var(--radius-pill);
+  padding: 0.2em 0.75em;
+  white-space: nowrap;
+  line-height: 1.6;
+  /* No background — transparent so it reads on any panel colour */
+  background: transparent;
+}
+
+/* ── Project link buttons ─────────────────────────────────── */
+.proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-ink);
+  background: transparent;
+  border: 2px solid var(--clr-ink);
+  border-radius: var(--radius-pill);
+  padding: 0.55em 1.4em;
+  /* Hard shadow — shifts on hover */
+  box-shadow: 3px 3px 0 var(--clr-ink);
+  transition: box-shadow var(--dur-fast) var(--ease-out),
+              transform   var(--dur-fast) var(--ease-out);
+}
+
+.proj-link:hover {
+  box-shadow: 1px 1px 0 var(--clr-ink);
+  transform: translate(2px, 2px);
+}
+
+.proj-link:focus-visible {
+  outline: 2px solid var(--clr-tomato);
+  outline-offset: 3px;
+}
+
+/* Primary variant: filled ink */
+.proj-link--primary {
+  background: var(--clr-ink);
+  color: var(--clr-paper);
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--clr-ink) 35%, transparent);
+}
+
+.proj-link--primary:hover {
+  box-shadow: 1px 1px 0 color-mix(in srgb, var(--clr-ink) 35%, transparent);
+  transform: translate(2px, 2px);
+}
+
+/* ── Contact CTA — big pill mailto button ─────────────────── */
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ff-mono);
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--clr-ink);
+  background: var(--clr-paper);
+  border: 2px solid var(--clr-paper);
+  border-radius: var(--radius-pill);
+  padding: 0.7em 2em;
+  /* Hard tomato shadow */
+  box-shadow: 5px 5px 0 var(--clr-tomato);
+  transition: box-shadow var(--dur-fast) var(--ease-out),
+              transform   var(--dur-fast) var(--ease-out);
+  word-break: break-all;
+}
+
+.contact-cta:hover {
+  box-shadow: 2px 2px 0 var(--clr-tomato);
+  transform: translate(3px, 3px);
+}
+
+.contact-cta:focus-visible {
+  outline: 2px solid var(--clr-tomato);
+  outline-offset: 4px;
+}
+
+.contact-clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: var(--space-6) 0 0;
+  color: var(--clr-paper);
+  font-family: var(--ff-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-clock__time {
+  color: var(--clr-butter);
+  font-variant-numeric: tabular-nums;
+}
+
+.contact-toast {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  z-index: var(--z-offcanvas);
+  background: var(--clr-ink);
+  border: 2px solid var(--clr-ink);
+  box-shadow: 6px 6px 0 var(--clr-tomato);
+  color: var(--clr-paper);
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  padding: var(--space-3) var(--space-4);
+  opacity: 0;
+  transform: translateY(var(--space-2));
+  transition: opacity var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  pointer-events: none;
+}
+
+.contact-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-toast {
+    transition: none;
+  }
+}
+
+/* ── Contact secondary links (underline draws on hover) ───── */
+.contact-links {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--clr-paper);
+  position: relative;
+  /* Underline drawn via pseudo-element */
+}
+
+.contact-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--clr-paper);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.contact-link:hover {
+  color: var(--clr-paper);
+}
+
+.contact-link:hover::after {
+  width: 100%;
+}
+
+.contact-link:focus-visible {
+  outline: 2px solid var(--clr-tomato);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Scroll-progress bar ──────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--clr-tomato);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: calc(var(--z-nav) + 10);
+  /* No CSS transition — JS drives it via rAF for smoothness */
+  pointer-events: none;
+}
+
+/* Under reduced-motion: show bar statically at full width */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress {
+    transform: scaleX(1);
+  }
+}
+
+/* ── Reveal animation ─────────────────────────────────────── */
+
+/* Hidden state (before JS adds .is-in) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  /* Stagger: --reveal-delay is an integer set inline (0 = no delay) */
+  transition:
+    opacity  0.7s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0) * 80ms),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0) * 80ms);
+}
+
+/* Visible state — JS adds this class via IntersectionObserver */
+[data-reveal].is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Under reduced-motion: skip animation, show immediately */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

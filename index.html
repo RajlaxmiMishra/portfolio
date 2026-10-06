@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FBF3F0" />
+
+  <!-- SEO -->
+  <title>Rajlaxmi Mishra | Full-stack Developer</title>
+  <meta name="description"
+        content="Rajlaxmi Mishra — B.Tech CSE student and full-stack developer from Ahmedabad, India, building things from front to back." />
+
+  <!-- Inline SVG favicon: tomato circle -->
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23D6336C'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Bricolage Grotesque (variable), Instrument Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+
+  <!-- Bootstrap CSS (pinned v5.3.3) — before own CSS -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous" />
+
+  <!-- Own CSS cascade -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+</head>
+<body id="top">
+
+  <!-- Scroll-progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAV — floating pill, fixed, centered
+  ════════════════════════════════════════════════════════ -->
+  <header class="site-nav" role="banner">
+    <div class="site-nav__inner">
+
+      <!-- Portfolio wordmark -->
+      <a href="#" class="site-nav__mark" aria-label="Portfolio — home">Portfolio</a>
+
+      <!-- Desktop links -->
+      <nav class="site-nav__links" aria-label="Primary navigation">
+        <span class="site-nav__highlight" aria-hidden="true"></span>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#toolbox">Toolbox</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Status dot + mobile toggle -->
+      <div class="site-nav__right">
+        <span class="status-dot" aria-label="Currently open to internships">
+          <span class="status-dot__pulse" aria-hidden="true"></span>
+          <span class="status-dot__label">Open to internships</span>
+        </span>
+
+        <!-- Hamburger — shown only on mobile -->
+        <button class="nav-toggle"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#mobileMenu"
+                aria-controls="mobileMenu"
+                aria-label="Open navigation menu">
+          <!-- Hamburger icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+               viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <line x1="3" y1="6"  x2="21" y2="6"  />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+    </div><!-- /.site-nav__inner -->
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MOBILE MENU — Bootstrap Offcanvas, full-screen overlay
+  ════════════════════════════════════════════════════════ -->
+  <div class="offcanvas offcanvas-end"
+       tabindex="-1"
+       id="mobileMenu"
+       aria-labelledby="mobileMenuLabel">
+
+    <button class="offcanvas__close btn-close btn-close-white"
+            type="button"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close navigation menu"></button>
+
+    <div class="offcanvas-body">
+      <span id="mobileMenuLabel" class="visually-hidden">Navigation menu</span>
+      <nav aria-label="Mobile navigation">
+        <a class="offcanvas__link d-block" href="#about">About</a>
+        <a class="offcanvas__link d-block" href="#work">Work</a>
+        <a class="offcanvas__link d-block" href="#toolbox">Toolbox</a>
+        <a class="offcanvas__link d-block" href="#journey">Journey</a>
+        <a class="offcanvas__link d-block" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════════ -->
+  <main id="main-content">
+  <section class="hero container" aria-label="Hero" id="hero">
+
+    <!-- Name — two lines, each in a mask for slide-up -->
+    <div class="hero__name-block">
+      <span class="hero__line-mask">
+        <span class="hero__name" aria-label="RAJLAXMI"><span class="hero__word" aria-hidden="true"><span class="hero__letter">R</span><span class="hero__letter">A</span><span class="hero__letter">J</span><span class="hero__letter">L</span><span class="hero__letter">A</span><span class="hero__letter">X</span><span class="hero__letter">M</span><span class="hero__letter">I</span></span></span>
+      </span>
+      <span class="hero__line-mask">
+        <span class="hero__name" aria-label="MISHRA"><span class="hero__word" aria-hidden="true"><span class="hero__letter">M</span><span class="hero__letter">I</span><span class="hero__letter">S</span><span class="hero__letter">H</span><span class="hero__letter">R</span><span class="hero__letter">A</span></span></span>
+      </span>
+      <!-- Visually-hidden full name for screen readers -->
+      <span class="visually-hidden">RAJLAXMI MISHRA</span>
+
+      <!-- Butter sticker overlapping the name -->
+      <div class="hero__sticker-wrap" aria-hidden="true">
+        <span class="sticker">B.Tech CSE '28</span>
+      </div>
+    </div>
+
+    <p class="hero__tagline">
+      Projects built from the interface down to the database.
+    </p>
+
+    <!-- Location -->
+    <p class="hero__location" aria-label="Location">
+      📍 Ahmedabad, India
+    </p>
+
+    <!-- ── Marquee band ── -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track">
+        <!-- Two identical sets so the loop is seamless -->
+        <span class="marquee-item">C</span>
+        <span class="marquee-item">C++</span>
+        <span class="marquee-item">Java</span>
+        <span class="marquee-item">Python</span>
+        <span class="marquee-item">React</span>
+        <span class="marquee-item">Node.js</span>
+        <span class="marquee-item">MySQL</span>
+        <span class="marquee-item">Git</span>
+        <span class="marquee-item">DSA</span>
+        <span class="marquee-item">OOP</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee-item">C</span>
+        <span class="marquee-item">C++</span>
+        <span class="marquee-item">Java</span>
+        <span class="marquee-item">Python</span>
+        <span class="marquee-item">React</span>
+        <span class="marquee-item">Node.js</span>
+        <span class="marquee-item">MySQL</span>
+        <span class="marquee-item">Git</span>
+        <span class="marquee-item">DSA</span>
+        <span class="marquee-item">OOP</span>
+      </div>
+    </div>
+
+  </section><!-- /#hero -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       SKELETON SECTIONS
+  ════════════════════════════════════════════════════════ -->
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       WORK SECTION
+  ════════════════════════════════════════════════════════ -->
+  <section class="work-section" id="work" aria-labelledby="work-heading">
+
+    <!-- Section intro -->
+    <div class="work-section__intro container">
+      <p class="section__label">SELECTED WORK</p>
+      <h2 class="section__heading" id="work-heading" data-reveal>Things I've built.</h2>
+    </div>
+
+    <!-- Project panels -->
+    <div class="work-panels" aria-label="Project panels">
+
+      <!-- ── 01 HashShelf ───────────────────────────────────── -->
+      <article class="work-panel work-panel--hash" aria-labelledby="proj-hash-title">
+        <div class="work-panel__inner">
+
+          <div class="work-panel__body">
+            <span class="work-panel__index" aria-hidden="true">01</span>
+            <h3 class="work-panel__title" id="proj-hash-title">HashShelf</h3>
+            <p class="work-panel__desc">Online bookstore web app for browsing, searching and viewing books.</p>
+
+            <div class="work-panel__links">
+              <a class="proj-link proj-link--primary"
+                 href="https://github.com/RajlaxmiMishra/hashshelf"
+                 target="_blank" rel="noopener"
+                 data-cursor="view">GitHub</a>
+              <a class="proj-link"
+                 href="https://hashshelf.vercel.app"
+                 target="_blank" rel="noopener"
+                 data-cursor="view">Live</a>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ── 02 DSA Visualization Lab ───────────────────────── -->
+      <article class="work-panel work-panel--dsa" aria-labelledby="proj-dsa-title">
+        <div class="work-panel__inner">
+          <div class="work-panel__body">
+            <span class="work-panel__index" aria-hidden="true">02</span>
+            <h3 class="work-panel__title" id="proj-dsa-title">DSA Visualization Lab</h3>
+            <p class="work-panel__desc">Interactive tool that visualizes sorting, searching and traversal algorithms in real time.</p>
+            <ul class="chip-list" aria-label="Tech stack">
+              <li class="chip">JavaScript</li>
+              <li class="chip">HTML</li>
+              <li class="chip">CSS</li>
+              <li class="chip">React.js</li>
+            </ul>
+            <div class="work-panel__links">
+              <a class="proj-link proj-link--primary"
+                 href="https://github.com/RajlaxmiMishra/dsa-visualization-lab"
+                 target="_blank" rel="noopener"
+                 data-cursor="view">GitHub</a>
+              <a class="proj-link"
+                 href="https://dsa-visualization-lab-wqre.vercel.app/"
+                 target="_blank" rel="noopener"
+                 data-cursor="view">Live</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 03 GlobeTrotter ────────────────────────────────── -->
+      <article class="work-panel work-panel--globe" aria-labelledby="proj-globe-title">
+        <div class="work-panel__inner">
+          <div class="work-panel__body">
+            <span class="work-panel__index" aria-hidden="true">03</span>
+            <h3 class="work-panel__title" id="proj-globe-title">GlobeTrotter</h3>
+            <!-- TODO -->
+            <div class="work-panel__links">
+              <a class="proj-link proj-link--primary"
+                 href="https://github.com/RajlaxmiMishra/globe-trotter"
+                 target="_blank" rel="noopener"
+                 data-cursor="view">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /.work-panels -->
+
+    <!-- Footer link -->
+    <div class="work-section__footer container">
+      <a class="work-more-link"
+         href="https://github.com/RajlaxmiMishra"
+         target="_blank" rel="noopener">
+        More on GitHub ↗
+      </a>
+    </div>
+
+  </section><!-- /#work -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       ABOUT
+  ════════════════════════════════════════════════════════ -->
+  <section class="about-section" id="about" aria-labelledby="about-heading">
+    <div class="about-section__inner container">
+
+      <!-- Left: photo frame -->
+      <div class="about-photo-col">
+        <div class="about-photo-frame">
+          <img src="img/photo.png" alt="Portrait of Rajlaxmi Mishra" width="519"
+               height="416" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Right: text -->
+      <div class="about-text-col">
+        <p class="section__label">ABOUT</p>
+        <h2 class="section__heading" id="about-heading" data-reveal>
+          <!-- TODO: better heading -->
+          A bit about me.
+        </h2>
+
+        <p class="about-para" data-reveal style="--reveal-delay: 1">
+          I'm a Computer Science student at Indus University, graduating in 2028, with a focus on software development, AI and automation. I like building things that work end to end, from the interface to the database behind it. I'm looking for a software internship where I can keep learning by shipping real work.
+        </p>
+
+        <!-- Fact chips -->
+        <ul class="fact-list" aria-label="Quick facts">
+          <li class="fact-chip" data-reveal style="--reveal-delay: 2">
+            <span class="fact-chip__label">Degree</span>
+            B.Tech CSE
+          </li>
+          <li class="fact-chip" data-reveal style="--reveal-delay: 3">
+            <span class="fact-chip__label">University</span>
+            Indus University
+          </li>
+          <li class="fact-chip" data-reveal style="--reveal-delay: 4">
+            <span class="fact-chip__label">Batch of 2028</span>
+          </li>
+          <li class="fact-chip" data-reveal style="--reveal-delay: 5">
+            <span class="fact-chip__label">CGPA</span>
+            8.58 / 10
+          </li>
+          <li class="fact-chip" data-reveal style="--reveal-delay: 6">
+            <span class="fact-chip__label">Location</span>
+            Ahmedabad, India
+          </li>
+          <li class="fact-chip" data-reveal style="--reveal-delay: 7">
+            <span class="fact-chip__label">Languages</span>
+            English / Hindi / Odia
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section><!-- /#about -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       TOOLBOX
+  ════════════════════════════════════════════════════════ -->
+  <section class="toolbox-section" id="toolbox" aria-labelledby="toolbox-heading">
+    <div class="container">
+      <p class="section__label">TOOLBOX</p>
+      <h2 class="section__heading" id="toolbox-heading" data-reveal>What I work with.</h2>
+    </div>
+
+    <div class="toolbox-grid container">
+
+      <!-- Wide block 1: Languages -->
+      <div class="toolbox-block toolbox-block--wide" data-reveal style="--reveal-delay: 1">
+        <p class="toolbox-block__title">Languages</p>
+        <ul class="chip-list" aria-label="Languages">
+          <li class="chip chip--tilt">C</li>
+          <li class="chip chip--tilt">C++</li>
+          <li class="chip chip--tilt">Java</li>
+          <li class="chip chip--tilt">Python</li>
+          <li class="chip chip--tilt">JavaScript</li>
+        </ul>
+      </div>
+
+      <!-- Wide block 2: Frontend -->
+      <div class="toolbox-block toolbox-block--wide" data-reveal style="--reveal-delay: 2">
+        <p class="toolbox-block__title">Frontend</p>
+        <ul class="chip-list" aria-label="Frontend">
+          <li class="chip chip--tilt">HTML</li>
+          <li class="chip chip--tilt">CSS</li>
+          <li class="chip chip--tilt">Bootstrap</li>
+          <li class="chip chip--tilt">React</li>
+        </ul>
+      </div>
+
+      <!-- Narrow block 1: Backend & data -->
+      <div class="toolbox-block toolbox-block--narrow toolbox-block--accent" data-reveal style="--reveal-delay: 3">
+        <p class="toolbox-block__title">Backend &amp; data</p>
+        <ul class="chip-list" aria-label="Backend and data">
+          <li class="chip chip--tilt">Node.js</li>
+          <li class="chip chip--tilt">Express</li>
+          <li class="chip chip--tilt">FastAPI</li>
+          <li class="chip chip--tilt">MySQL</li>
+          <li class="chip chip--tilt">PostgreSQL</li>
+          <li class="chip chip--tilt">MongoDB</li>
+        </ul>
+      </div>
+
+      <!-- Narrow block 2: Tools -->
+      <div class="toolbox-block toolbox-block--narrow" data-reveal style="--reveal-delay: 4">
+        <p class="toolbox-block__title">Tools</p>
+        <ul class="chip-list" aria-label="Tools">
+          <li class="chip chip--tilt">Git</li>
+          <li class="chip chip--tilt">GitHub</li>
+          <li class="chip chip--tilt">VS Code</li>
+          <li class="chip chip--tilt">Docker</li>
+        </ul>
+      </div>
+
+      <!-- Narrow block 3: Core CS -->
+      <div class="toolbox-block toolbox-block--narrow" data-reveal style="--reveal-delay: 5">
+        <p class="toolbox-block__title">Core CS</p>
+        <ul class="chip-list" aria-label="Core CS">
+          <li class="chip chip--tilt">DSA</li>
+          <li class="chip chip--tilt">OOP</li>
+          <li class="chip chip--tilt">Operating Systems</li>
+          <li class="chip chip--tilt">IoT</li>
+        </ul>
+      </div>
+
+    </div>
+  </section><!-- /#toolbox -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       JOURNEY
+  ════════════════════════════════════════════════════════ -->
+  <section class="journey-section" id="journey" aria-labelledby="journey-heading">
+    <div class="container">
+      <p class="section__label">JOURNEY</p>
+      <h2 class="section__heading" id="journey-heading" data-reveal>Where I've been learning.</h2>
+    </div>
+
+    <div class="timeline container" role="list">
+
+      <!-- Entry 1 (newest) -->
+      <div class="timeline__entry timeline__entry--right" role="listitem" data-reveal style="--reveal-delay: 1">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__card">
+          <p class="timeline__date">Jun - Aug 2026</p>
+          <h3 class="timeline__title">Front-End Developer Intern</h3>
+          <p class="timeline__org">Cloud Ladder Technologies</p>
+          <p class="timeline__desc">Internship as a front-end developer.</p>
+        </div>
+      </div>
+
+      <!-- Entry 2 -->
+      <div class="timeline__entry timeline__entry--left" role="listitem" data-reveal style="--reveal-delay: 2">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__card">
+          <p class="timeline__date">June 2026</p>
+          <h3 class="timeline__title">AI Certification Bootcamp</h3>
+          <p class="timeline__org">Indus University</p>
+          <p class="timeline__desc">30-hour intensive on AI learning fundamentals and advanced concepts.</p>
+        </div>
+      </div>
+
+      <!-- Entry 3 -->
+      <div class="timeline__entry timeline__entry--right" role="listitem" data-reveal style="--reveal-delay: 1">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__card">
+          <p class="timeline__date">Dec 2025</p>
+          <h3 class="timeline__title">Java Certification Bootcamp</h3>
+          <p class="timeline__org">Indus University</p>
+          <p class="timeline__desc">30-hour intensive on Java fundamentals and advanced concepts.</p>
+        </div>
+      </div>
+
+      <!-- Entry 2 -->
+      <div class="timeline__entry timeline__entry--left" role="listitem" data-reveal style="--reveal-delay: 2">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__card">
+          <p class="timeline__date">Jul 2025</p>
+          <h3 class="timeline__title">Web Development Training</h3>
+          <p class="timeline__org">Internshala</p>
+          <p class="timeline__desc">8 weeks covering HTML, CSS, Bootstrap, JavaScript, PHP, React and a final full-stack project.</p>
+        </div>
+      </div>
+
+      <!-- Entry 3 -->
+      <div class="timeline__entry timeline__entry--right" role="listitem" data-reveal style="--reveal-delay: 3">
+        <div class="timeline__marker" aria-hidden="true"></div>
+        <div class="timeline__card">
+          <!-- TODO: confirm start year -->
+          <p class="timeline__date">2024 – 2028</p>
+          <h3 class="timeline__title">B.Tech in Computer Science Engineering</h3>
+          <p class="timeline__org">Indus University</p>
+        </div>
+      </div>
+
+    </div><!-- /.timeline -->
+  </section><!-- /#journey -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       CONTACT
+  ════════════════════════════════════════════════════════ -->
+  <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+    <div class="contact-section__inner container">
+
+      <p class="section__label contact-section__label">CONTACT</p>
+      <h2 class="section__heading contact-section__heading" id="contact-heading" data-reveal>
+        Let's work together.
+      </h2>
+
+      <p class="contact-section__sub" data-reveal style="--reveal-delay: 1">Open to software internships.</p>
+
+      <!-- Primary CTA -->
+      <a class="contact-cta"
+         href="mailto:mishra.rajlaxmi27@gmail.com"
+         data-cursor="send"
+         data-reveal
+         style="--reveal-delay: 2">
+        mishra.rajlaxmi27@gmail.com
+      </a>
+
+      <p class="contact-clock" aria-hidden="true">
+        <span>Ahmedabad, India</span>
+        <time class="contact-clock__time" data-contact-clock></time>
+      </p>
+      <span class="contact-toast" role="status" hidden>Copied</span>
+
+      <!-- Secondary links -->
+      <nav class="contact-links" aria-label="Social links" data-reveal style="--reveal-delay: 3">
+        <a class="contact-link"
+           href="https://github.com/RajlaxmiMishra"
+           target="_blank" rel="noopener">GitHub</a>
+        <a class="contact-link"
+           href="https://www.linkedin.com/in/rajlaxmi-mishra-146997419/"
+           target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+
+    </div>
+  </section><!-- /#contact -->
+
+  </main><!-- /#main-content -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="site-footer__inner container">
+      <p class="site-footer__copy">© 2026 Rajlaxmi Mishra</p>
+      <p class="site-footer__credit">Built by hand with HTML, CSS and JS</p>
+      <a class="site-footer__top" href="#top" aria-label="Back to top">↑ Top</a>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmfw7m3+m1VN34YdS7LnOY2lnmdb"
+          crossorigin="anonymous"></script>
+
+  <!-- Own JS -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

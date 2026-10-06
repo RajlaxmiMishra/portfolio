@@ -1,0 +1,57 @@
+/* ============================================================
+   TOKENS — single source of truth for all design decisions
+   ============================================================ */
+
+:root {
+
+  /* ── Colour ───────────────────────────────────────────────── */
+  --clr-tomato:      #D6336C;
+  --clr-tomato-dim:  #B82D5D;
+  --clr-butter:      #FFE08A;
+  --clr-ink:         #2A1218;
+  --clr-ink-soft:    #4A2C33;
+  --clr-paper:       #FBF3F0;
+  --clr-paper-dim:   #F2E3DF;
+  --clr-green:       #19704A;
+  --clr-mono:        #684F55;
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --ff-display:  "Bricolage Grotesque", system-ui, sans-serif;
+  --ff-body:     "Instrument Sans",    system-ui, sans-serif;
+  --ff-mono:     "JetBrains Mono",     "Courier New", monospace;
+
+  /* ── Spacing ─────────────────────────────────────────────── */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* ── Radii ───────────────────────────────────────────────── */
+  --radius-pill: 9999px;
+  --radius-card: 1rem;
+  --radius-sticker: 0.75rem;
+
+  /* ── Shadows ─────────────────────────────────────────────── */
+  --shadow-nav:     0 4px 32px color-mix(in srgb, var(--clr-ink) 10%, transparent);
+  --shadow-sticker: 4px 6px 20px color-mix(in srgb, var(--clr-ink) 18%, transparent);
+
+  /* ── Transitions ─────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 200ms;
+  --dur-base: 350ms;
+  --dur-slow: 600ms;
+
+  /* ── Z-indices ───────────────────────────────────────────── */
+  --z-nav:      100;
+  --z-sticker:   10;
+  --z-offcanvas: 200;
+
+  /* ── Nav ─────────────────────────────────────────────────── */
+  --nav-height: 3.5rem;
+  --scroll-pad: calc(var(--nav-height) + var(--space-6));
+}
